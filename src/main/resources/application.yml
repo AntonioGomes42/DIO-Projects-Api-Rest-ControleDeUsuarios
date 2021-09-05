@@ -1,16 +1,16 @@
 #Server Configurations
-server:
-  port: 8081
+#server:
+#  port: 8081
 
 #Credenciais do Banco MySQL
-spring:
-  jpa:
-    show-sql: true #Serve para mostrar o SQL que o hibernate implementa e eexecuta
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/controleusuarios
-    username: antoniogomes
-    password: amopizza180
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#spring:
+#  jpa:
+#    show-sql: true #Serve para mostrar o SQL que o hibernate implementa e eexecuta
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/controleusuarios
+#    username: antoniogomes
+#    password: amopizza180
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
