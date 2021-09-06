@@ -1,4 +1,4 @@
-package br.com.projetosdio.controledeusuario.controledeusuario.dto;
+package br.com.projetosdio.controledeusuario.controledeusuario.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

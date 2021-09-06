@@ -1,7 +1,8 @@
 package br.com.projetosdio.controledeusuario.controledeusuario.controller;
 
-import br.com.projetosdio.controledeusuario.controledeusuario.dto.MessageResponseDTO;
 import br.com.projetosdio.controledeusuario.controledeusuario.dto.request.PersonDTO;
+import br.com.projetosdio.controledeusuario.controledeusuario.dto.response.MessageResponseDTO;
+import br.com.projetosdio.controledeusuario.controledeusuario.exception.PersonNotFoundException;
 import br.com.projetosdio.controledeusuario.controledeusuario.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,13 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<PersonDTO> listAllPeople(){
+    public List<PersonDTO> listAllPeople() {
         return personService.listAllPeople();
+    }
+
+    @GetMapping("/{id}")
+    public PersonDTO getPerson(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.getPerson(id);
     }
 
 }
