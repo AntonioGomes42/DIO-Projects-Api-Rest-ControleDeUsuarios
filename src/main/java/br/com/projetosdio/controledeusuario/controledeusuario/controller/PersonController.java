@@ -1,11 +1,13 @@
 package br.com.projetosdio.controledeusuario.controledeusuario.controller;
 
 import br.com.projetosdio.controledeusuario.controledeusuario.dto.MessageResponseDTO;
-import br.com.projetosdio.controledeusuario.controledeusuario.entity.Person;
+import br.com.projetosdio.controledeusuario.controledeusuario.dto.request.PersonDTO;
 import br.com.projetosdio.controledeusuario.controledeusuario.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -20,8 +22,8 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson(@RequestBody Person person) {
-        return personService.createPerson(person);
+    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
+        return personService.createPerson(personDTO);
     }
 
 }
