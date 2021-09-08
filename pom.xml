@@ -14,7 +14,10 @@
 	<name>controledeusuario</name>
 	<description>Person API project</description>
 	<properties>
-		<java.version>11</java.version>
+			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+			<java.version>11</java.version>
+			<maven.compiler.source>11</maven.compiler.source>
+			<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 	<dependencies>
 
@@ -83,13 +86,21 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 				<configuration>
 					<excludes>
 						<exclude>
@@ -99,30 +110,77 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
-				<source>${java.version}</source>
-				<target>${java.version}</target>
-				<annotationProcessorPaths>
+					<source>11</source>
+					<target>11</target>
+					<annotationProcessorPaths>
 
-					<path>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok</artifactId>
-						<version>${lombok.version}</version>
-					</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
 
-					<path>
-						<groupId>org.mapstruct</groupId>
-						<artifactId>mapstruct-processor</artifactId>
-						<version>1.4.2.Final</version>
-					</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.4.2.Final</version>
+						</path>
 
-				</annotationProcessorPaths>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+<!--			<plugin>-->
+<!--				<artifactId>maven-assembly-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>single</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<archive>-->
+<!--						<manifest>-->
+<!--							<addClasspath>true</addClasspath>-->
+<!--							<mainClass>br.com.projetosdio.controledeusuario.controledeusuario.ControledeusuarioApplication</mainClass>-->
+<!--						</manifest>-->
+<!--					</archive>-->
+<!--					<descriptorRefs>-->
+<!--						<descriptorRef>jar-with-dependencies</descriptorRef>-->
+<!--					</descriptorRefs>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<debug>true</debug>
+					<optimize>false</optimize>
+					<showDeprecation>true</showDeprecation>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
+
+<!--	<distributionManagement>-->
+<!--		<repository>-->
+<!--			<uniqueVersion>false</uniqueVersion>-->
+<!--			<id>corp1</id>-->
+<!--			<name>Corporate Repository</name>-->
+<!--			<url>scp://repo/maven2</url>-->
+<!--			<layout>default</layout>-->
+<!--		</repository>-->
+<!--	</distributionManagement>-->
 
 </project>
